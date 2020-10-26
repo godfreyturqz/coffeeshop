@@ -23,7 +23,17 @@ Route::get('/coffees', function () {
         ['name' => 'americano', 'price' => 10, 'temp' => 'hot'],
         ['name' => 'espresso', 'price' => 20, 'temp' => 'cold'],
     ];
-    return view('coffees', ['coffees' => $coffees]);
+    $name = request('name');
+
+    return view('coffees', [
+        'coffees' => $coffees,
+        'name' => $name,
+        'age' => request('age')
+    ]);
     // return 'coffee';
     // return ['name'=>'caffuccino', 'temp'=>'hot'];
+});
+
+Route::get('/coffees/{id}', function ($id) {
+    return view('details', ['id'=> $id]);
 });

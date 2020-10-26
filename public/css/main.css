@@ -1,0 +1,15 @@
+body {
+    font-family: 'Nunito';
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+footer {
+    background: #111111;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 0px;
+}
