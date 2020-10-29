@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CoffeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,23 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/coffees', function () {
-    $coffees = [
-        ['name' => 'caffuccino', 'price' => 15, 'temp' => 'hot'],
-        ['name' => 'americano', 'price' => 10, 'temp' => 'hot'],
-        ['name' => 'espresso', 'price' => 20, 'temp' => 'cold'],
-    ];
-    $name = request('name');
-
-    return view('coffees', [
-        'coffees' => $coffees,
-        'name' => $name,
-        'age' => request('age')
-    ]);
-    // return 'coffee';
-    // return ['name'=>'caffuccino', 'temp'=>'hot'];
-});
-
-Route::get('/coffees/{id}', function ($id) {
-    return view('details', ['id'=> $id]);
-});
+Route::get('/coffees', [CoffeeController::class, 'index']);
+Route::get('/coffees/{id}', 'CoffeeController@show');
