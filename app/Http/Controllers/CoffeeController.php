@@ -9,15 +9,39 @@ use App\Models\Coffee;
 class CoffeeController extends Controller
 {
     public function index() {
-        // $coffees = Coffee::all();
+        $coffees = Coffee::all();
         // $coffees = Coffee::orderBy('name', 'asc')->get();
         // $coffees = Coffee::where('name', 'godfrey')->get();
-        $coffees = Coffee::latest()->get();
+        // $coffees = Coffee::latest()->get();
         
-        return view('coffees', ['coffees' => $coffees]);
+        return view('coffees.index', ['coffees' => $coffees]);
     }
+
     public function show($id) {
-        return view('details', ['id'=> $id]);
+        $coffee = Coffee::findOrFail($id);
+
+        return view('coffees.show', ['coffee'=> $coffee]);
+    }
+
+    public function create() {
+        return view('coffees.create');
+    }
+
+    public function store() {
+        $coffee = new Coffee();
+        $coffee->name = request('name');
+        $coffee->type = request('type');
+        $coffee->flavor = request('flavor');
+
+        $coffee->save();
+
+        return redirect('/')->with('message', 'Thank you. Order sent.');
+    }
+    public function destroy($id){
+        $pizza= Coffee::findOrFail($id);
+        $pizza->delete();
+
+        return redirect('/coffees');
     }
 }
 
