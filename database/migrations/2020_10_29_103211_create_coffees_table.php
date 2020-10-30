@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoffeeTable extends Migration
+class CreateCoffeesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateCoffeeTable extends Migration
             $table->timestamps();
             $table->string('type');
             $table->string('name');
-            // $table->integer('price');
+            $table->json('flavor');
         });
     }
 

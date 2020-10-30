@@ -14,7 +14,7 @@ class AddPriceToCoffeeTable extends Migration
     public function up()
     {
         Schema::table('coffees', function (Blueprint $table) {
-            $table->integer('price');
+            $table->integer('price')->nullable();
         });
     }
 
