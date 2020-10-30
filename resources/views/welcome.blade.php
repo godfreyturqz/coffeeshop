@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+<div>
     @if (Route::has('login'))
         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             @auth
@@ -16,7 +16,14 @@
         </div>
     @endif
 
-    <img src="/img/logo.jpg" alt="logo">
-    </div>
+    <img src="/img/logo.jpg" alt="logo" style="height:70vh;">
+    <p>{{ session('message') }}</p>
+    <h3>
+        <a href="/coffees/create">Order Here</a>
+    </h3>
+    <h3>
+        <a href="/coffees">Show Order</a>
+    </h3>
+
 </div>
 @endsection

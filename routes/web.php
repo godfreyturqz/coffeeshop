@@ -19,4 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/coffees', [CoffeeController::class, 'index']);
-Route::get('/coffees/{id}', 'CoffeeController@show');
+Route::get('/coffees/create', [CoffeeController::class, 'create']);
+Route::post('/coffees', [CoffeeController::class, 'store']);
+Route::get('/coffees/{id}', [CoffeeController::class, 'show']);
+Route::delete('/coffees/{id}', [CoffeeController::class, 'destroy']);
